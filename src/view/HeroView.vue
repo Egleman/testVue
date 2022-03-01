@@ -2,14 +2,15 @@
     <div class="wrapper mt-5">
     <div class="container">
         <div class="grid d-flex justify-content-between flex-wrap">
-            <router-link v-for="poste in posts" :key="poste.id" style="text-decoration: none" :to='getterId(poste.id)'>
+            <!--<router-link v-for="poste in posts" :key="poste.id" style="text-decoration: none" :to='getterId(poste.id)'>-->
                 <post :title="poste.title"
                 :img="poste.img"
                 :description="poste.description"
                 :id="poste.id"
                 @getId="getterId"
+                v-for="poste in posts" :key="poste.id"
                 />
-            </router-link>
+            <!--</router-link>-->
         </div>
     </div>
 </div>
@@ -30,8 +31,8 @@ export default {
     methods: {
         getterId(id) {
         //console.log(id);
-        //return this.$router.push({name: 'fullPage', params: {id: id}})
-        return `/single/${id}`
+        return this.$router.push({name: 'fullPage', params: {id: id}})
+        //return `/single/${id}`
         }
     }
     
